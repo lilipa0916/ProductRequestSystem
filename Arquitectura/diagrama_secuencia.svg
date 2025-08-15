@@ -1,0 +1,173 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="600" y="30" text-anchor="middle" font-size="24" font-weight="bold" fill="#1a1a1a">
+    Diagrama de Secuencia - Autenticación y Autorización
+  </text>
+  
+  <!-- Actors -->
+  <g>
+    <!-- User -->
+    <rect x="50" y="60" width="80" height="40" rx="20" fill="#4CAF50" opacity="0.8"/>
+    <text x="90" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="white">User</text>
+    <line x1="90" y1="100" x2="90" y2="750" stroke="#4CAF50" stroke-width="3"/>
+    
+    <!-- Blazor Client -->
+    <rect x="200" y="60" width="100" height="40" rx="5" fill="#2196F3" opacity="0.8"/>
+    <text x="250" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Blazor Client</text>
+    <line x1="250" y1="100" x2="250" y2="750" stroke="#2196F3" stroke-width="3"/>
+    
+    <!-- Auth Service -->
+    <rect x="350" y="60" width="100" height="40" rx="5" fill="#FF9800" opacity="0.8"/>
+    <text x="400" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Auth Service</text>
+    <line x1="400" y1="100" x2="400" y2="750" stroke="#FF9800" stroke-width="3"/>
+    
+    <!-- WebAPI -->
+    <rect x="500" y="60" width="100" height="40" rx="5" fill="#9C27B0" opacity="0.8"/>
+    <text x="550" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="white">WebAPI</text>
+    <line x1="550" y1="100" x2="550" y2="750" stroke="#9C27B0" stroke-width="3"/>
+    
+    <!-- Auth Controller -->
+    <rect x="650" y="60" width="100" height="40" rx="5" fill="#F44336" opacity="0.8"/>
+    <text x="700" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="white">AuthController</text>
+    <line x1="700" y1="100" x2="700" y2="750" stroke="#F44336" stroke-width="3"/>
+    
+    <!-- Identity -->
+    <rect x="800" y="60" width="100" height="40" rx="5" fill="#607D8B" opacity="0.8"/>
+    <text x="850" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Identity</text>
+    <line x1="850" y1="100" x2="850" y2="750" stroke="#607D8B" stroke-width="3"/>
+    
+    <!-- Database -->
+    <rect x="950" y="60" width="100" height="40" rx="5" fill="#795548" opacity="0.8"/>
+    <text x="1000" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Database</text>
+    <line x1="1000" y1="100" x2="1000" y2="750" stroke="#795548" stroke-width="3"/>
+  </g>
+  
+  <!-- Messages -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    <marker id="return" markerWidth="10" markerHeight="7" refX="1" refY="3.5" orient="auto">
+      <polygon points="10 0, 0 3.5, 10 7" fill="#666"/>
+    </marker>
+  </defs>
+  
+  <!-- 1. User enters credentials -->
+  <g>
+    <line x1="90" y1="130" x2="250" y2="130" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="170" y="125" text-anchor="middle" font-size="12" fill="#333">1. Enter Login Credentials</text>
+    <rect x="120" y="135" width="100" height="20" fill="#fff" stroke="#333" rx="3"/>
+    <text x="170" y="148" text-anchor="middle" font-size="10" fill="#333">email, password</text>
+  </g>
+  
+  <!-- 2. Call AuthService -->
+  <g>
+    <line x1="250" y1="170" x2="400" y2="170" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="325" y="165" text-anchor="middle" font-size="12" fill="#333">2. LoginAsync()</text>
+    <rect x="275" y="175" width="100" height="20" fill="#fff" stroke="#333" rx="3"/>
+    <text x="325" y="188" text-anchor="middle" font-size="10" fill="#333">LoginDto</text>
+  </g>
+  
+  <!-- 3. HTTP POST to API -->
+  <g>
+    <line x1="400" y1="210" x2="550" y2="210" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="475" y="205" text-anchor="middle" font-size="12" fill="#333">3. POST /api/auth/login</text>
+    <rect x="425" y="215" width="100" height="20" fill="#fff" stroke="#333" rx="3"/>
+    <text x="475" y="228" text-anchor="middle" font-size="10" fill="#333">HTTPS Request</text>
+  </g>
+  
+  <!-- 4. Route to Controller -->
+  <g>
+    <line x1="550" y1="250" x2="700" y2="250" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="625" y="245" text-anchor="middle" font-size="12" fill="#333">4. Login(LoginDto)</text>
+    <rect x="575" y="255" width="100" height="20" fill="#fff" stroke="#333" rx="3"/>
+    <text x="625" y="268" text-anchor="middle" font-size="10" fill="#333">Model Binding</text>
+  </g>
+  
+  <!-- 5. Find User -->
+  <g>
+    <line x1="700" y1="290" x2="850" y2="290" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="775" y="285" text-anchor="middle" font-size="12" fill="#333">5. FindByEmailAsync()</text>
+    <rect x="725" y="295" width="100" height="20" fill="#fff" stroke="#333" rx="3"/>
+    <text x="775" y="308" text-anchor="middle" font-size="10" fill="#333">email</text>
+  </g>
+  
+  <!-- 6. Query Database -->
+  <g>
+    <line x1="850" y1="330" x2="1000" y2="330" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="925" y="325" text-anchor="middle" font-size="12" fill="#333">6. SELECT User</text>
+    <rect x="875" y="335" width="100" height="20" fill="#fff" stroke="#333" rx="3"/>
+    <text x="925" y="348" text-anchor="middle" font-size="10" fill="#333">SQL Query</text>
+  </g>
+  
+  <!-- 7. Return User -->
+  <g>
+    <line x1="1000" y1="370" x2="850" y2="370" stroke="#666" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#return)"/>
+    <text x="925" y="365" text-anchor="middle" font-size="12" fill="#666">7. User Entity</text>
+  </g>
+  
+  <!-- 8. Return User -->
+  <g>
+    <line x1="850" y1="400" x2="700" y2="400" stroke="#666" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#return)"/>
+    <text x="775" y="395" text-anchor="middle" font-size="12" fill="#666">8. User or null</text>
+  </g>
+  
+  <!-- 9. Check Password -->
+  <g>
+    <line x1="700" y1="430" x2="850" y2="430" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="775" y="425" text-anchor="middle" font-size="12" fill="#333">9. CheckPasswordAsync()</text>
+    <rect x="725" y="435" width="100" height="20" fill="#fff" stroke="#333" rx="3"/>
+    <text x="775" y="448" text-anchor="middle" font-size="10" fill="#333">user, password</text>
+  </g>
+  
+  <!-- 10. Password validation result -->
+  <g>
+    <line x1="850" y1="470" x2="700" y2="470" stroke="#666" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#return)"/>
+    <text x="775" y="465" text-anchor="middle" font-size="12" fill="#666">10. bool result</text>
+  </g>
+  
+  <!-- 11. Generate JWT Token -->
+  <g>
+    <rect x="680" y="490" width="140" height="40" fill="#FFC107" opacity="0.3" rx="5"/>
+    <text x="750" y="510" text-anchor="middle" font-size="12" font-weight="bold" fill="#F57F17">11. Generate JWT Token</text>
+    <text x="750" y="525" text-anchor="middle" font-size="10" fill="#E65100">Include: UserId, Email, Role</text>
+  </g>
+  
+  <!-- 12. Return AuthResponse -->
+  <g>
+    <line x1="700" y1="550" x2="550" y2="550" stroke="#666" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#return)"/>
+    <text x="625" y="545" text-anchor="middle" font-size="12" fill="#666">12. AuthResponseDto</text>
+    <rect x="575" y="555" width="100" height="20" fill="#fff" stroke="#666" rx="3"/>
+    <text x="625" y="568" text-anchor="middle" font-size="10" fill="#666">Token + User</text>
+  </g>
+  
+  <!-- 13. HTTP Response -->
+  <g>
+    <line x1="550" y1="590" x2="400" y2="590" stroke="#666" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#return)"/>
+    <text x="475" y="585" text-anchor="middle" font-size="12" fill="#666">13. 200 OK</text>
+    <rect x="425" y="595" width="100" height="20" fill="#fff" stroke="#666" rx="3"/>
+    <text x="475" y="608" text-anchor="middle" font-size="10" fill="#666">JSON Response</text>
+  </g>
+  
+  <!-- 14. Return to Client -->
+  <g>
+    <line x1="400" y1="630" x2="250" y2="630" stroke="#666" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#return)"/>
+    <text x="325" y="625" text-anchor="middle" font-size="12" fill="#666">14. AuthResponseDto</text>
+  </g>
+  
+  <!-- 15. Store Token & Navigate -->
+  <g>
+    <rect x="180" y="650" width="140" height="40" fill="#4CAF50" opacity="0.3" rx="5"/>
+    <text x="250" y="670" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">15. Store Token &amp; Navigate</text>
+    <text x="250" y="685" text-anchor="middle" font-size="10" fill="#2E7D32">LocalStorage + /manage</text>
+  </g>
+  
+  <!-- 16. Success Feedback -->
+  <g>
+    <line x1="250" y1="710" x2="90" y2="710" stroke="#666" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#return)"/>
+    <text x="170" y="705" text-anchor="middle" font-size="12" fill="#666">16. Redirect to /manage</text>
+  </g>
+</svg>

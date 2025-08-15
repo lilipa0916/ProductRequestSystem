@@ -1,0 +1,217 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="600" y="30" text-anchor="middle" font-size="24" font-weight="bold" fill="#1a1a1a">
+    Sistema de Solicitudes de Producto - Clean Architecture
+  </text>
+  
+  <!-- Client Layer -->
+  <g>
+    <rect x="50" y="80" width="280" height="150" rx="10" fill="#4CAF50" opacity="0.2" stroke="#4CAF50" stroke-width="2"/>
+    <text x="190" y="105" text-anchor="middle" font-size="16" font-weight="bold" fill="#2E7D32">Client Layer</text>
+    <text x="190" y="125" text-anchor="middle" font-size="14" fill="#2E7D32">Blazor WebAssembly</text>
+    
+    <!-- Client components -->
+    <rect x="70" y="140" width="100" height="30" rx="5" fill="#4CAF50" opacity="0.3"/>
+    <text x="120" y="158" text-anchor="middle" font-size="12" fill="#1B5E20">Login/Register</text>
+    
+    <rect x="180" y="140" width="100" height="30" rx="5" fill="#4CAF50" opacity="0.3"/>
+    <text x="230" y="158" text-anchor="middle" font-size="12" fill="#1B5E20">Client View</text>
+    
+    <rect x="70" y="180" width="100" height="30" rx="5" fill="#4CAF50" opacity="0.3"/>
+    <text x="120" y="198" text-anchor="middle" font-size="12" fill="#1B5E20">Provider View</text>
+    
+    <rect x="180" y="180" width="100" height="30" rx="5" fill="#4CAF50" opacity="0.3"/>
+    <text x="230" y="198" text-anchor="middle" font-size="12" fill="#1B5E20">Services</text>
+  </g>
+  
+  <!-- WebApi Layer -->
+  <g>
+    <rect x="400" y="80" width="280" height="150" rx="10" fill="#2196F3" opacity="0.2" stroke="#2196F3" stroke-width="2"/>
+    <text x="540" y="105" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">WebApi Layer</text>
+    <text x="540" y="125" text-anchor="middle" font-size="14" fill="#1565C0">ASP.NET Core API</text>
+    
+    <!-- API components -->
+    <rect x="420" y="140" width="80" height="30" rx="5" fill="#2196F3" opacity="0.3"/>
+    <text x="460" y="158" text-anchor="middle" font-size="12" fill="#0D47A1">AuthController</text>
+    
+    <rect x="510" y="140" width="80" height="30" rx="5" fill="#2196F3" opacity="0.3"/>
+    <text x="550" y="158" text-anchor="middle" font-size="12" fill="#0D47A1">RequestsController</text>
+    
+    <rect x="600" y="140" width="60" height="30" rx="5" fill="#2196F3" opacity="0.3"/>
+    <text x="630" y="158" text-anchor="middle" font-size="12" fill="#0D47A1">OffersController</text>
+    
+    <rect x="420" y="180" width="120" height="30" rx="5" fill="#2196F3" opacity="0.3"/>
+    <text x="480" y="198" text-anchor="middle" font-size="12" fill="#0D47A1">JWT Authentication</text>
+    
+    <rect x="550" y="180" width="110" height="30" rx="5" fill="#2196F3" opacity="0.3"/>
+    <text x="605" y="198" text-anchor="middle" font-size="12" fill="#0D47A1">Authorization</text>
+  </g>
+  
+  <!-- Application Layer -->
+  <g>
+    <rect x="750" y="80" width="280" height="150" rx="10" fill="#FF9800" opacity="0.2" stroke="#FF9800" stroke-width="2"/>
+    <text x="890" y="105" text-anchor="middle" font-size="16" font-weight="bold" fill="#E65100">Application Layer</text>
+    <text x="890" y="125" text-anchor="middle" font-size="14" fill="#E65100">Business Logic</text>
+    
+    <!-- Application components -->
+    <rect x="770" y="140" width="80" height="30" rx="5" fill="#FF9800" opacity="0.3"/>
+    <text x="810" y="158" text-anchor="middle" font-size="12" fill="#BF360C">AuthService</text>
+    
+    <rect x="860" y="140" width="80" height="30" rx="5" fill="#FF9800" opacity="0.3"/>
+    <text x="900" y="158" text-anchor="middle" font-size="12" fill="#BF360C">RequestService</text>
+    
+    <rect x="950" y="140" width="60" height="30" rx="5" fill="#FF9800" opacity="0.3"/>
+    <text x="980" y="158" text-anchor="middle" font-size="12" fill="#BF360C">OfferService</text>
+    
+    <rect x="770" y="180" width="80" height="30" rx="5" fill="#FF9800" opacity="0.3"/>
+    <text x="810" y="198" text-anchor="middle" font-size="12" fill="#BF360C">DTOs</text>
+    
+    <rect x="860" y="180" width="80" height="30" rx="5" fill="#FF9800" opacity="0.3"/>
+    <text x="900" y="198" text-anchor="middle" font-size="12" fill="#BF360C">Validators</text>
+    
+    <rect x="950" y="180" width="60" height="30" rx="5" fill="#FF9800" opacity="0.3"/>
+    <text x="980" y="198" text-anchor="middle" font-size="12" fill="#BF360C">AutoMapper</text>
+  </g>
+  
+  <!-- Infrastructure Layer -->
+  <g>
+    <rect x="400" y="280" width="400" height="150" rx="10" fill="#9C27B0" opacity="0.2" stroke="#9C27B0" stroke-width="2"/>
+    <text x="600" y="305" text-anchor="middle" font-size="16" font-weight="bold" fill="#6A1B9A">Infrastructure Layer</text>
+    <text x="600" y="325" text-anchor="middle" font-size="14" fill="#6A1B9A">Data Access &amp; External Services</text>
+    
+    <!-- Infrastructure components -->
+    <rect x="420" y="340" width="100" height="30" rx="5" fill="#9C27B0" opacity="0.3"/>
+    <text x="470" y="358" text-anchor="middle" font-size="12" fill="#4A148C">ApplicationDbContext</text>
+    
+    <rect x="530" y="340" width="80" height="30" rx="5" fill="#9C27B0" opacity="0.3"/>
+    <text x="570" y="358" text-anchor="middle" font-size="12" fill="#4A148C">Repositories</text>
+    
+    <rect x="620" y="340" width="80" height="30" rx="5" fill="#9C27B0" opacity="0.3"/>
+    <text x="660" y="358" text-anchor="middle" font-size="12" fill="#4A148C">UnitOfWork</text>
+    
+    <rect x="710" y="340" width="70" height="30" rx="5" fill="#9C27B0" opacity="0.3"/>
+    <text x="745" y="358" text-anchor="middle" font-size="12" fill="#4A148C">Identity</text>
+    
+    <rect x="480" y="380" width="160" height="30" rx="5" fill="#9C27B0" opacity="0.3"/>
+    <text x="560" y="398" text-anchor="middle" font-size="12" fill="#4A148C">Entity Framework Core</text>
+  </g>
+  
+  <!-- Domain Layer -->
+  <g>
+    <rect x="850" y="280" width="280" height="150" rx="10" fill="#F44336" opacity="0.2" stroke="#F44336" stroke-width="2"/>
+    <text x="990" y="305" text-anchor="middle" font-size="16" font-weight="bold" fill="#C62828">Domain Layer</text>
+    <text x="990" y="325" text-anchor="middle" font-size="14" fill="#C62828">Core Business Entities</text>
+    
+    <!-- Domain components -->
+    <rect x="870" y="340" width="60" height="30" rx="5" fill="#F44336" opacity="0.3"/>
+    <text x="900" y="358" text-anchor="middle" font-size="12" fill="#B71C1C">User</text>
+    
+    <rect x="940" y="340" width="80" height="30" rx="5" fill="#F44336" opacity="0.3"/>
+    <text x="980" y="358" text-anchor="middle" font-size="12" fill="#B71C1C">ProductRequest</text>
+    
+    <rect x="1030" y="340" width="60" height="30" rx="5" fill="#F44336" opacity="0.3"/>
+    <text x="1060" y="358" text-anchor="middle" font-size="12" fill="#B71C1C">Offer</text>
+    
+    <rect x="870" y="380" width="80" height="30" rx="5" fill="#F44336" opacity="0.3"/>
+    <text x="910" y="398" text-anchor="middle" font-size="12" fill="#B71C1C">Interfaces</text>
+    
+    <rect x="960" y="380" width="60" height="30" rx="5" fill="#F44336" opacity="0.3"/>
+    <text x="990" y="398" text-anchor="middle" font-size="12" fill="#B71C1C">Enums</text>
+    
+    <rect x="1030" y="380" width="80" height="30" rx="5" fill="#F44336" opacity="0.3"/>
+    <text x="1070" y="398" text-anchor="middle" font-size="12" fill="#B71C1C">BaseEntity</text>
+  </g>
+  
+  <!-- Database -->
+  <g>
+    <rect x="450" y="480" width="200" height="100" rx="10" fill="#607D8B" opacity="0.2" stroke="#607D8B" stroke-width="2"/>
+    <text x="550" y="505" text-anchor="middle" font-size="16" font-weight="bold" fill="#37474F">SQL Server Database</text>
+    
+    <rect x="470" y="520" width="60" height="25" rx="3" fill="#607D8B" opacity="0.3"/>
+    <text x="500" y="536" text-anchor="middle" font-size="11" fill="#263238">Users</text>
+    
+    <rect x="540" y="520" width="80" height="25" rx="3" fill="#607D8B" opacity="0.3"/>
+    <text x="580" y="536" text-anchor="middle" font-size="11" fill="#263238">ProductRequests</text>
+    
+    <rect x="470" y="550" width="60" height="25" rx="3" fill="#607D8B" opacity="0.3"/>
+    <text x="500" y="566" text-anchor="middle" font-size="11" fill="#263238">Offers</text>
+    
+    <rect x="540" y="550" width="80" height="25" rx="3" fill="#607D8B" opacity="0.3"/>
+    <text x="580" y="566" text-anchor="middle" font-size="11" fill="#263238">AspNetRoles</text>
+  </g>
+  
+  <!-- Users/Roles -->
+  <g>
+    <rect x="50" y="480" width="130" height="180" rx="10" fill="#795548" opacity="0.2" stroke="#795548" stroke-width="2"/>
+    <text x="115" y="505" text-anchor="middle" font-size="16" font-weight="bold" fill="#3E2723">Users &amp; Roles</text>
+    
+    <!-- Client -->
+    <rect x="70" y="520" width="90" height="60" rx="5" fill="#4CAF50" opacity="0.3"/>
+    <text x="115" y="540" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">CLIENT</text>
+    <text x="115" y="555" text-anchor="middle" font-size="10" fill="#1B5E20">• Create Requests</text>
+    <text x="115" y="568" text-anchor="middle" font-size="10" fill="#1B5E20">• Manage Offers</text>
+    
+    <!-- Provider -->
+    <rect x="70" y="590" width="90" height="60" rx="5" fill="#2196F3" opacity="0.3"/>
+    <text x="115" y="610" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">PROVIDER</text>
+    <text x="115" y="625" text-anchor="middle" font-size="10" fill="#0D47A1">• View Requests</text>
+    <text x="115" y="638" text-anchor="middle" font-size="10" fill="#0D47A1">• Create Offers</text>
+  </g>
+  
+  <!-- Flow Arrows -->
+  <!-- Client to API -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+  </defs>
+  
+  <!-- HTTP/HTTPS REST API -->
+  <line x1="330" y1="155" x2="400" y2="155" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="365" y="150" text-anchor="middle" font-size="10" fill="#666">HTTPS</text>
+  <text x="365" y="165" text-anchor="middle" font-size="10" fill="#666">REST API</text>
+  
+  <!-- API to Application -->
+  <line x1="680" y1="155" x2="750" y2="155" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="715" y="150" text-anchor="middle" font-size="10" fill="#666">DI</text>
+  
+  <!-- Application to Infrastructure -->
+  <line x1="890" y1="230" x2="890" y2="280" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="890" y1="255" x2="700" y2="255" stroke="#666" stroke-width="2"/>
+  <line x1="700" y1="255" x2="700" y2="280" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Application to Domain -->
+  <line x1="890" y1="230" x2="890" y2="280" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="890" y1="255" x2="990" y2="255" stroke="#666" stroke-width="2"/>
+  <line x1="990" y1="255" x2="990" y2="280" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Infrastructure to Database -->
+  <line x1="550" y1="430" x2="550" y2="480" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="570" y="455" text-anchor="middle" font-size="10" fill="#666">EF Core</text>
+  
+  <!-- Users to Client -->
+  <line x1="115" y1="480" x2="115" y2="280" stroke="#666" stroke-width="2"/>
+  <line x1="115" y1="280" x2="190" y2="280" stroke="#666" stroke-width="2"/>
+  <line x1="190" y1="280" x2="190" y2="230" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Authentication Flow -->
+  <g>
+    <rect x="700" y="600" width="400" height="120" rx="10" fill="#FFC107" opacity="0.2" stroke="#FFC107" stroke-width="2"/>
+    <text x="900" y="625" text-anchor="middle" font-size="16" font-weight="bold" fill="#F57F17">Authentication &amp; Authorization Flow</text>
+    
+    <text x="720" y="650" font-size="12" fill="#E65100">1. User login → JWT token generation</text>
+    <text x="720" y="670" font-size="12" fill="#E65100">2. Token validation on each API request</text>
+    <text x="720" y="690" font-size="12" fill="#E65100">3. Role-based authorization (Client/Provider)</text>
+    <text x="720" y="710" font-size="12" fill="#E65100">4. Secure access to protected endpoints</text>
+  </g>
+  
+  <!-- Data Flow -->
+  <g>
+    <rect x="50" y="720" width="600" height="60" rx="10" fill="#E91E63" opacity="0.2" stroke="#E91E63" stroke-width="2"/>
+    <text x="350" y="745" text-anchor="middle" font-size="16" font-weight="bold" fill="#AD1457">Data Flow</text>
+    <text x="70" y="765" font-size="12" fill="#880E4F">Client Request → API Controller → Application Service → Repository → Database → Response</text>
+  </g>
+</svg>

@@ -1,0 +1,313 @@
+﻿@using ProductRequestSystem.Client.Enum
+@inject IProductRequestService ProductRequestService
+@inject IOfferService OfferService
+@inject IJSRuntime JSRuntime
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h4>Solicitudes Abiertas</h4>
+                <button class="btn btn-sm btn-outline-secondary" @onclick="LoadOpenRequests">
+                    Actualizar
+                </button>
+            </div>
+            <div class="card-body">
+                @if (isLoadingRequests)
+                {
+                    <div class="text-center">
+                        <div class="spinner-border"></div>
+                    </div>
+                }
+                else if (openRequests.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Cliente</th>
+                                    <th>Fecha Req.</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var request in openRequests)
+                                {
+                                    <tr>
+                                        <td>
+                                            <strong>@request.ProductName</strong>
+                                            <br />
+                                            <small class="text-muted">@request.Description</small>
+                                        </td>
+                                        <td>@request.Quantity</td>
+                                        <td>@request.ClientName</td>
+                                        <td>@request.RequiredDate.ToString("dd/MM/yyyy")</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary" @onclick="() => ShowOfferForm(request)">
+                                                Hacer Oferta
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted">No hay solicitudes abiertas disponibles.</p>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h4>Mis Ofertas</h4>
+                <button class="btn btn-sm btn-outline-secondary" @onclick="LoadMyOffers">
+                    Actualizar
+                </button>
+            </div>
+            <div class="card-body">
+                @if (isLoadingOffers)
+                {
+                    <div class="text-center">
+                        <div class="spinner-border"></div>
+                    </div>
+                }
+                else if (myOffers.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Precio</th>
+                                    <th>Días Est.</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var offer in myOffers)
+                                {
+                                    <tr>
+                                        <td>
+                                            @offer.ProductRequest?.ProductName
+                                            <br />
+                                            <small class="text-muted">Cliente: @offer.ProductRequest?.ClientName</small>
+                                        </td>
+                                        <td>$@offer.Price.ToString("N2")</td>
+                                        <td>@offer.EstimatedDays</td>
+                                        <td>
+                                            <span class="badge bg-@GetOfferStatusColor(offer.Status)">
+                                                @GetOfferStatusText(offer.Status)
+                                            </span>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted">No has realizado ofertas aún.</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (selectedRequest != null)
+{
+    <div class="modal fade show d-block" style="background-color: rgba(0,0,0,0.5);">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Hacer Oferta - @selectedRequest.ProductName</h5>
+                    <button type="button" class="btn-close" @onclick="CloseOfferForm"></button>
+                </div>
+                <div class="modal-body">
+                    @if (!string.IsNullOrEmpty(offerMessage))
+                    {
+                        <div class="alert @(isOfferSuccess ? "alert-success" : "alert-danger")">
+                            @offerMessage
+                        </div>
+                    }
+
+                    <div class="mb-3">
+                        <label class="form-label">Descripción del Producto:</label>
+                        <p class="form-control-plaintext">@selectedRequest.Description</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Cantidad Solicitada:</label>
+                        <p class="form-control-plaintext">@selectedRequest.Quantity</p>
+                    </div>
+
+                    <EditForm Model="@offerModel" OnValidSubmit="@CreateOffer">
+                        <DataAnnotationsValidator />
+                        <ValidationSummary />
+
+                        <div class="mb-3">
+                            <label class="form-label">Precio Ofertado:</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <InputNumber @bind-Value="offerModel.Price" class="form-control" step="0.01" />
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Días Estimados:</label>
+                            <InputNumber @bind-Value="offerModel.EstimatedDays" class="form-control" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Comentarios (Opcional):</label>
+                            <InputTextArea @bind-Value="offerModel.Comments" class="form-control" rows="3" />
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary" disabled="@isCreatingOffer">
+                                @if (isCreatingOffer)
+                                {
+                                    <span class="spinner-border spinner-border-sm me-2"></span>
+                                }
+                                Enviar Oferta
+                            </button>
+                        </div>
+                    </EditForm>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private List<ProductRequestDto> openRequests = new();
+    private List<OfferDto> myOffers = new();
+    private ProductRequestDto? selectedRequest;
+    private CreateOfferDto offerModel = new();
+    private bool isLoadingRequests = false;
+    private bool isLoadingOffers = false;
+    private bool isCreatingOffer = false;
+    private string offerMessage = string.Empty;
+    private bool isOfferSuccess = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadOpenRequests();
+        await LoadMyOffers();
+    }
+
+    private async Task LoadOpenRequests()
+    {
+        isLoadingRequests = true;
+        try
+        {
+            var result = await ProductRequestService.GetOpenRequestsAsync();
+            openRequests = result.ToList();
+        }
+        catch (Exception ex)
+        {
+            // Handle error
+            Console.WriteLine($"Error loading open requests: {ex.Message}");
+        }
+        finally
+        {
+            isLoadingRequests = false;
+        }
+    }
+
+    private async Task LoadMyOffers()
+    {
+        isLoadingOffers = true;
+        try
+        {
+            var result = await OfferService.GetMyOffersAsync();
+            myOffers = result.ToList();
+        }
+        catch (Exception ex)
+        {
+            // Handle error
+            Console.WriteLine($"Error loading my offers: {ex.Message}");
+        }
+        finally
+        {
+            isLoadingOffers = false;
+        }
+    }
+
+    private void ShowOfferForm(ProductRequestDto request)
+    {
+        selectedRequest = request;
+        offerModel = new CreateOfferDto
+        {
+            ProductRequestId = request.Id,
+            Price = 0,
+            EstimatedDays = 1
+        };
+        offerMessage = string.Empty;
+    }
+
+    private void CloseOfferForm()
+    {
+        selectedRequest = null;
+        offerModel = new();
+        offerMessage = string.Empty;
+    }
+
+    private async Task CreateOffer()
+    {
+        isCreatingOffer = true;
+        offerMessage = string.Empty;
+
+        try
+        {
+            var result = await OfferService.CreateAsync(offerModel);
+            if (result != null)
+            {
+                offerMessage = "Oferta enviada exitosamente.";
+                isOfferSuccess = true;
+                await LoadMyOffers();
+                await Task.Delay(1500);
+                CloseOfferForm();
+            }
+            else
+            {
+                offerMessage = "Error al enviar la oferta.";
+                isOfferSuccess = false;
+            }
+        }
+        catch (Exception ex)
+        {
+            offerMessage = $"Error: {ex.Message}";
+            isOfferSuccess = false;
+        }
+        finally
+        {
+            isCreatingOffer = false;
+        }
+    }
+
+    private string GetOfferStatusColor(OfferStatus status) => status switch
+    {
+        OfferStatus.Pending => "warning",
+        OfferStatus.Accepted => "success",
+        OfferStatus.Rejected => "danger",
+        OfferStatus.CounterOffered => "info",
+        _ => "secondary"
+    };
+
+    private string GetOfferStatusText(OfferStatus status) => status switch
+    {
+        OfferStatus.Pending => "Pendiente",
+        OfferStatus.Accepted => "Aceptada",
+        OfferStatus.Rejected => "Rechazada",
+        OfferStatus.CounterOffered => "Contraofertada",
+        _ => "Desconocido"
+    };
+}

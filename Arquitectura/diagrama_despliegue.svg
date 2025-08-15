@@ -1,0 +1,239 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="600" y="30" text-anchor="middle" font-size="24" font-weight="bold" fill="#1a1a1a">
+    Diagrama de Despliegue - Arquitectura de Producción
+  </text>
+  
+  <!-- Development Environment -->
+  <g>
+    <rect x="50" y="80" width="350" height="300" rx="15" fill="#4CAF50" opacity="0.1" stroke="#4CAF50" stroke-width="3"/>
+    <text x="225" y="105" text-anchor="middle" font-size="18" font-weight="bold" fill="#2E7D32">Desarrollo Local</text>
+    
+    <!-- Developer Machine -->
+    <rect x="70" y="120" width="310" height="200" rx="10" fill="#E8F5E8" stroke="#4CAF50" stroke-width="2"/>
+    <text x="225" y="145" text-anchor="middle" font-size="14" font-weight="bold" fill="#2E7D32">💻 Máquina del Desarrollador</text>
+    
+    <!-- VS/VSCode -->
+    <rect x="90" y="160" width="100" height="50" rx="5" fill="#4CAF50" opacity="0.7" stroke="#2E7D32" stroke-width="2"/>
+    <text x="140" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Visual Studio</text>
+    <text x="140" y="195" text-anchor="middle" font-size="10" fill="white">IDE</text>
+    
+    <!-- API Local -->
+    <rect x="200" y="160" width="80" height="50" rx="5" fill="#2196F3" opacity="0.7" stroke="#1565C0" stroke-width="2"/>
+    <text x="240" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="white">API</text>
+    <text x="240" y="195" text-anchor="middle" font-size="10" fill="white">:7000</text>
+    
+    <!-- Blazor Local -->
+    <rect x="290" y="160" width="80" height="50" rx="5" fill="#FF9800" opacity="0.7" stroke="#E65100" stroke-width="2"/>
+    <text x="330" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Blazor</text>
+    <text x="330" y="195" text-anchor="middle" font-size="10" fill="white">:7001</text>
+    
+    <!-- LocalDB -->
+    <rect x="150" y="230" width="120" height="50" rx="5" fill="#607D8B" opacity="0.7" stroke="#37474F" stroke-width="2"/>
+    <text x="210" y="250" text-anchor="middle" font-size="12" font-weight="bold" fill="white">SQL LocalDB</text>
+    <text x="210" y="265" text-anchor="middle" font-size="10" fill="white">Database</text>
+    
+    <!-- Git -->
+    <rect x="90" y="290" width="280" height="20" rx="5" fill="#795548" opacity="0.7" stroke="#3E2723" stroke-width="2"/>
+    <text x="230" y="304" text-anchor="middle" font-size="12" font-weight="bold" fill="white">🔗 Git Repository (GitHub/Azure DevOps)</text>
+    
+    <!-- Tools -->
+    <rect x="70" y="340" width="140" height="30" rx="5" fill="#9C27B0" opacity="0.3"/>
+    <text x="140" y="359" text-anchor="middle" font-size="10" fill="#4A148C">Postman, Swagger, DevTools</text>
+    
+    <rect x="220" y="340" width="160" height="30" rx="5" fill="#E91E63" opacity="0.3"/>
+    <text x="300" y="359" text-anchor="middle" font-size="10" fill="#880E4F">Hot Reload, Auto-rebuild</text>
+  </g>
+  
+  <!-- Staging Environment -->
+  <g>
+    <rect x="450" y="80" width="300" height="300" rx="15" fill="#FF9800" opacity="0.1" stroke="#FF9800" stroke-width="3"/>
+    <text x="600" y="105" text-anchor="middle" font-size="18" font-weight="bold" fill="#E65100">Staging/Testing</text>
+    
+    <!-- Web Server -->
+    <rect x="470" y="120" width="260" height="80" rx="10" fill="#FFF3E0" stroke="#FF9800" stroke-width="2"/>
+    <text x="600" y="145" text-anchor="middle" font-size="14" font-weight="bold" fill="#E65100">🖥️ Web Server (IIS/Kestrel)</text>
+    
+    <rect x="490" y="160" width="100" height="30" rx="5" fill="#2196F3" opacity="0.7" stroke="#1565C0" stroke-width="2"/>
+    <text x="540" y="179" text-anchor="middle" font-size="11" font-weight="bold" fill="white">API App</text>
+    
+    <rect x="600" y="160" width="110" height="30" rx="5" fill="#FF9800" opacity="0.7" stroke="#E65100" stroke-width="2"/>
+    <text x="655" y="179" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Blazor WASM</text>
+    
+    <!-- Database Server -->
+    <rect x="470" y="220" width="260" height="60" rx="10" fill="#E3F2FD" stroke="#2196F3" stroke-width="2"/>
+    <text x="600" y="245" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">🗄️ SQL Server Database</text>
+    <text x="600" y="265" text-anchor="middle" font-size="12" fill="#1565C0">Test Data + Performance Testing</text>
+    
+    <!-- Testing Tools -->
+    <rect x="470" y="300" width="260" height="70" rx="10" fill="#F3E5F5" stroke="#9C27B0" stroke-width="2"/>
+    <text x="600" y="325" text-anchor="middle" font-size="14" font-weight="bold" fill="#6A1B9A">🧪 Testing Environment</text>
+    
+    <rect x="490" y="340" width="80" height="25" rx="3" fill="#9C27B0" opacity="0.7"/>
+    <text x="530" y="356" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Integration Tests</text>
+    
+    <rect x="580" y="340" width="80" height="25" rx="3" fill="#9C27B0" opacity="0.7"/>
+    <text x="620" y="356" text-anchor="middle" font-size="10" font-weight="bold" fill="white">E2E Tests</text>
+    
+    <rect x="670" y="340" width="50" height="25" rx="3" fill="#9C27B0" opacity="0.7"/>
+    <text x="695" y="356" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Load Tests</text>
+  </g>
+  
+  <!-- Production Environment -->
+  <g>
+    <rect x="800" y="80" width="350" height="300" rx="15" fill="#F44336" opacity="0.1" stroke="#F44336" stroke-width="3"/>
+    <text x="975" y="105" text-anchor="middle" font-size="18" font-weight="bold" fill="#C62828">Producción</text>
+    
+    <!-- Load Balancer -->
+    <rect x="820" y="120" width="310" height="40" rx="10" fill="#FF5722" opacity="0.7" stroke="#D84315" stroke-width="2"/>
+    <text x="975" y="144" text-anchor="middle" font-size="14" font-weight="bold" fill="white">⚖️ Load Balancer / Reverse Proxy (Nginx)</text>
+    
+    <!-- Web Servers -->
+    <rect x="820" y="180" width="150" height="80" rx="10" fill="#FFEBEE" stroke="#F44336" stroke-width="2"/>
+    <text x="895" y="205" text-anchor="middle" font-size="14" font-weight="bold" fill="#C62828">🖥️ Web Server 1</text>
+    
+    <rect x="840" y="220" width="60" height="25" rx="3" fill="#2196F3" opacity="0.7"/>
+    <text x="870" y="235" text-anchor="middle" font-size="10" font-weight="bold" fill="white">API</text>
+    
+    <rect x="910" y="220" width="50" height="25" rx="3" fill="#FF9800" opacity="0.7"/>
+    <text x="935" y="235" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Blazor</text>
+    
+    <rect x="980" y="180" width="150" height="80" rx="10" fill="#FFEBEE" stroke="#F44336" stroke-width="2"/>
+    <text x="1055" y="205" text-anchor="middle" font-size="14" font-weight="bold" fill="#C62828">🖥️ Web Server 2</text>
+    
+    <rect x="1000" y="220" width="60" height="25" rx="3" fill="#2196F3" opacity="0.7"/>
+    <text x="1030" y="235" text-anchor="middle" font-size="10" font-weight="bold" fill="white">API</text>
+    
+    <rect x="1070" y="220" width="50" height="25" rx="3" fill="#FF9800" opacity="0.7"/>
+    <text x="1095" y="235" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Blazor</text>
+    
+    <!-- Database Server -->
+    <rect x="820" y="280" width="310" height="60" rx="10" fill="#E3F2FD" stroke="#2196F3" stroke-width="2"/>
+    <text x="975" y="305" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">🗄️ SQL Server Cluster</text>
+    <text x="975" y="325" text-anchor="middle" font-size="12" fill="#1565C0">High Availability + Backup</text>
+    
+    <!-- Monitoring -->
+    <rect x="820" y="350" width="150" height="25" rx="5" fill="#4CAF50" opacity="0.7"/>
+    <text x="895" y="366" text-anchor="middle" font-size="11" font-weight="bold" fill="white">📊 Monitoring</text>
+    
+    <rect x="980" y="350" width="150" height="25" rx="5" fill="#607D8B" opacity="0.7"/>
+    <text x="1055" y="366" text-anchor="middle" font-size="11" font-weight="bold" fill="white">🔐 Security</text>
+  </g>
+  
+  <!-- CI/CD Pipeline -->
+  <g>
+    <rect x="50" y="420" width="1100" height="120" rx="15" fill="#673AB7" opacity="0.1" stroke="#673AB7" stroke-width="3"/>
+    <text x="600" y="445" text-anchor="middle" font-size="18" font-weight="bold" fill="#4527A0">CI/CD Pipeline</text>
+    
+    <!-- Pipeline steps -->
+    <rect x="80" y="460" width="100" height="60" rx="8" fill="#673AB7" opacity="0.7" stroke="#4527A0" stroke-width="2"/>
+    <text x="130" y="485" text-anchor="middle" font-size="12" font-weight="bold" fill="white">📥 Source</text>
+    <text x="130" y="500" text-anchor="middle" font-size="10" fill="white">Git Push</text>
+    
+    <rect x="200" y="460" width="100" height="60" rx="8" fill="#673AB7" opacity="0.7" stroke="#4527A0" stroke-width="2"/>
+    <text x="250" y="485" text-anchor="middle" font-size="12" font-weight="bold" fill="white">🔨 Build</text>
+    <text x="250" y="500" text-anchor="middle" font-size="10" fill="white">Compile + Test</text>
+    
+    <rect x="320" y="460" width="100" height="60" rx="8" fill="#673AB7" opacity="0.7" stroke="#4527A0" stroke-width="2"/>
+    <text x="370" y="485" text-anchor="middle" font-size="12" font-weight="bold" fill="white">🧪 Test</text>
+    <text x="370" y="500" text-anchor="middle" font-size="10" fill="white">Unit + Integration</text>
+    
+    <rect x="440" y="460" width="100" height="60" rx="8" fill="#673AB7" opacity="0.7" stroke="#4527A0" stroke-width="2"/>
+    <text x="490" y="485" text-anchor="middle" font-size="12" font-weight="bold" fill="white">🔍 Analysis</text>
+    <text x="490" y="500" text-anchor="middle" font-size="10" fill="white">SonarQube</text>
+    
+    <rect x="560" y="460" width="100" height="60" rx="8" fill="#673AB7" opacity="0.7" stroke="#4527A0" stroke-width="2"/>
+    <text x="610" y="485" text-anchor="middle" font-size="12" font-weight="bold" fill="white">📦 Package</text>
+    <text x="610" y="500" text-anchor="middle" font-size="10" fill="white">Docker/Zip</text>
+    
+    <rect x="680" y="460" width="100" height="60" rx="8" fill="#FF9800" opacity="0.7" stroke="#E65100" stroke-width="2"/>
+    <text x="730" y="485" text-anchor="middle" font-size="12" font-weight="bold" fill="white">🚀 Deploy</text>
+    <text x="730" y="500" text-anchor="middle" font-size="10" fill="white">Staging</text>
+    
+    <rect x="800" y="460" width="100" height="60" rx="8" fill="#4CAF50" opacity="0.7" stroke="#2E7D32" stroke-width="2"/>
+    <text x="850" y="485" text-anchor="middle" font-size="12" font-weight="bold" fill="white">✅ Approve</text>
+    <text x="850" y="500" text-anchor="middle" font-size="10" fill="white">Manual</text>
+    
+    <rect x="920" y="460" width="100" height="60" rx="8" fill="#F44336" opacity="0.7" stroke="#C62828" stroke-width="2"/>
+    <text x="970" y="485" text-anchor="middle" font-size="12" font-weight="bold" fill="white">🎯 Deploy</text>
+    <text x="970" y="500" text-anchor="middle" font-size="10" fill="white">Production</text>
+    
+    <rect x="1040" y="460" width="100" height="60" rx="8" fill="#607D8B" opacity="0.7" stroke="#37474F" stroke-width="2"/>
+    <text x="1090" y="485" text-anchor="middle" font-size="12" font-weight="bold" fill="white">📊 Monitor</text>
+    <text x="1090" y="500" text-anchor="middle" font-size="10" fill="white">Health Check</text>
+    
+    <!-- Arrows between pipeline steps -->
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#4527A0"/>
+      </marker>
+    </defs>
+    
+    <line x1="180" y1="490" x2="200" y2="490" stroke="#4527A0" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="300" y1="490" x2="320" y2="490" stroke="#4527A0" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="420" y1="490" x2="440" y2="490" stroke="#4527A0" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="540" y1="490" x2="560" y2="490" stroke="#4527A0" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="660" y1="490" x2="680" y2="490" stroke="#4527A0" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="780" y1="490" x2="800" y2="490" stroke="#4527A0" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="900" y1="490" x2="920" y2="490" stroke="#4527A0" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="1020" y1="490" x2="1040" y2="490" stroke="#4527A0" stroke-width="2" marker-end="url(#arrow)"/>
+  </g>
+  
+  <!-- Cloud Services -->
+  <g>
+    <rect x="50" y="580" width="1100" height="120" rx="15" fill="#2196F3" opacity="0.1" stroke="#2196F3" stroke-width="3"/>
+    <text x="600" y="605" text-anchor="middle" font-size="18" font-weight="bold" fill="#1565C0">Servicios en la Nube (Azure/AWS)</text>
+    
+    <!-- Azure Services -->
+    <rect x="80" y="620" width="120" height="60" rx="8" fill="#0078D4" opacity="0.7" stroke="#005A9F" stroke-width="2"/>
+    <text x="140" y="645" text-anchor="middle" font-size="12" font-weight="bold" fill="white">☁️ App Service</text>
+    <text x="140" y="660" text-anchor="middle" font-size="10" fill="white">Web Hosting</text>
+    
+    <rect x="220" y="620" width="120" height="60" rx="8" fill="#0078D4" opacity="0.7" stroke="#005A9F" stroke-width="2"/>
+    <text x="280" y="645" text-anchor="middle" font-size="12" font-weight="bold" fill="white">🗄️ SQL Database</text>
+    <text x="280" y="660" text-anchor="middle" font-size="10" fill="white">Managed SQL</text>
+    
+    <rect x="360" y="620" width="120" height="60" rx="8" fill="#0078D4" opacity="0.7" stroke="#005A9F" stroke-width="2"/>
+    <text x="420" y="645" text-anchor="middle" font-size="12" font-weight="bold" fill="white">🔐 Key Vault</text>
+    <text x="420" y="660" text-anchor="middle" font-size="10" fill="white">Secrets</text>
+    
+    <rect x="500" y="620" width="120" height="60" rx="8" fill="#0078D4" opacity="0.7" stroke="#005A9F" stroke-width="2"/>
+    <text x="560" y="645" text-anchor="middle" font-size="12" font-weight="bold" fill="white">📊 App Insights</text>
+    <text x="560" y="660" text-anchor="middle" font-size="10" fill="white">Monitoring</text>
+    
+    <rect x="640" y="620" width="120" height="60" rx="8" fill="#0078D4" opacity="0.7" stroke="#005A9F" stroke-width="2"/>
+    <text x="700" y="645" text-anchor="middle" font-size="12" font-weight="bold" fill="white">🚀 DevOps</text>
+    <text x="700" y="660" text-anchor="middle" font-size="10" fill="white">Pipelines</text>
+    
+    <rect x="780" y="620" width="120" height="60" rx="8" fill="#0078D4" opacity="0.7" stroke="#005A9F" stroke-width="2"/>
+    <text x="840" y="645" text-anchor="middle" font-size="12" font-weight="bold" fill="white">💾 Blob Storage</text>
+    <text x="840" y="660" text-anchor="middle" font-size="10" fill="white">Static Files</text>
+    
+    <rect x="920" y="620" width="120" height="60" rx="8" fill="#0078D4" opacity="0.7" stroke="#005A9F" stroke-width="2"/>
+    <text x="980" y="645" text-anchor="middle" font-size="12" font-weight="bold" fill="white">🌐 CDN</text>
+    <text x="980" y="660" text-anchor="middle" font-size="10" fill="white">Content Delivery</text>
+    
+    <rect x="1060" y="620" width="80" height="60" rx="8" fill="#0078D4" opacity="0.7" stroke="#005A9F" stroke-width="2"/>
+    <text x="1100" y="645" text-anchor="middle" font-size="12" font-weight="bold" fill="white">🔄 Redis</text>
+    <text x="1100" y="660" text-anchor="middle" font-size="10" fill="white">Cache</text>
+  </g>
+  
+  <!-- Connections -->
+  <line x1="400" y1="195" x2="450" y2="195" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="425" y="190" text-anchor="middle" font-size="10" fill="#666">Deploy</text>
+  
+  <line x1="750" y1="195" x2="800" y2="195" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="775" y="190" text-anchor="middle" font-size="10" fill="#666">Deploy</text>
+  
+  <!-- Technology Stack -->
+  <g>
+    <rect x="50" y="730" width="1100" height="50" rx="10" fill="#E8F5E8" stroke="#4CAF50" stroke-width="2"/>
+    <text x="600" y="750" text-anchor="middle" font-size="16" font-weight="bold" fill="#2E7D32">Tecnologías de Despliegue</text>
+    
+    <text x="80" y="770" font-size="12" fill="#2E7D32">Docker, IIS, Kestrel, Nginx, SQL Server, Azure DevOps, GitHub Actions</text>
+    <text x="700" y="770" font-size="12" fill="#2E7D32">HTTPS, SSL/TLS, Load Balancing, Health Checks, Blue-Green Deployment</text>
+  </g>
+</svg>

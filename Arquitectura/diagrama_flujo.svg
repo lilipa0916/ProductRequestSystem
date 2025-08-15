@@ -1,0 +1,169 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="600" y="30" text-anchor="middle" font-size="24" font-weight="bold" fill="#1a1a1a">
+    Flujo del Proceso de Negocio - Sistema de Solicitudes
+  </text>
+  
+  <!-- Swimlanes -->
+  <rect x="50" y="80" width="1100" height="200" fill="#4CAF50" opacity="0.1" stroke="#4CAF50" stroke-width="2"/>
+  <text x="30" y="180" text-anchor="middle" font-size="16" font-weight="bold" fill="#2E7D32" transform="rotate(-90 30 180)">CLIENTE</text>
+  
+  <rect x="50" y="280" width="1100" height="200" fill="#2196F3" opacity="0.1" stroke="#2196F3" stroke-width="2"/>
+  <text x="30" y="380" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0" transform="rotate(-90 30 380)">PROVEEDOR</text>
+  
+  <rect x="50" y="480" width="1100" height="200" fill="#FF9800" opacity="0.1" stroke="#FF9800" stroke-width="2"/>
+  <text x="30" y="580" text-anchor="middle" font-size="16" font-weight="bold" fill="#E65100" transform="rotate(-90 30 580)">SISTEMA</text>
+  
+  <!-- Flow elements -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+  
+  <!-- Start -->
+  <circle cx="100" cy="180" r="20" fill="#4CAF50" stroke="#2E7D32" stroke-width="3"/>
+  <text x="100" y="185" text-anchor="middle" font-size="12" font-weight="bold" fill="white">START</text>
+  
+  <!-- 1. Cliente se registra/inicia sesión -->
+  <rect x="150" y="150" width="120" height="60" rx="10" fill="#4CAF50" opacity="0.8" stroke="#2E7D32" stroke-width="2"/>
+  <text x="210" y="175" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Registro/</text>
+  <text x="210" y="190" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Inicio Sesión</text>
+  <text x="210" y="205" text-anchor="middle" font-size="10" fill="white">Cliente</text>
+  
+  <!-- 2. Cliente crea solicitud -->
+  <rect x="300" y="150" width="120" height="60" rx="10" fill="#4CAF50" opacity="0.8" stroke="#2E7D32" stroke-width="2"/>
+  <text x="360" y="175" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Crear</text>
+  <text x="360" y="190" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Solicitud</text>
+  <text x="360" y="205" text-anchor="middle" font-size="10" fill="white">Producto</text>
+  
+  <!-- 3. Sistema actualiza estado -->
+  <rect x="450" y="550" width="120" height="60" rx="10" fill="#FF9800" opacity="0.8" stroke="#E65100" stroke-width="2"/>
+  <text x="510" y="575" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Estado:</text>
+  <text x="510" y="590" text-anchor="middle" font-size="12" font-weight="bold" fill="white">ABIERTA</text>
+  
+  <!-- 4. Proveedor ve solicitudes -->
+  <rect x="450" y="350" width="120" height="60" rx="10" fill="#2196F3" opacity="0.8" stroke="#1565C0" stroke-width="2"/>
+  <text x="510" y="375" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Ver</text>
+  <text x="510" y="390" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Solicitudes</text>
+  <text x="510" y="405" text-anchor="middle" font-size="10" fill="white">Abiertas</text>
+  
+  <!-- 5. Proveedor crea oferta -->
+  <rect x="600" y="350" width="120" height="60" rx="10" fill="#2196F3" opacity="0.8" stroke="#1565C0" stroke-width="2"/>
+  <text x="660" y="375" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Crear</text>
+  <text x="660" y="390" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Oferta</text>
+  <text x="660" y="405" text-anchor="middle" font-size="10" fill="white">Precio + Días</text>
+  
+  <!-- 6. Sistema actualiza estado -->
+  <rect x="750" y="550" width="120" height="60" rx="10" fill="#FF9800" opacity="0.8" stroke="#E65100" stroke-width="2"/>
+  <text x="810" y="575" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Estado:</text>
+  <text x="810" y="590" text-anchor="middle" font-size="12" font-weight="bold" fill="white">NEGOCIACIÓN</text>
+  
+  <!-- 7. Cliente ve ofertas -->
+  <rect x="750" y="150" width="120" height="60" rx="10" fill="#4CAF50" opacity="0.8" stroke="#2E7D32" stroke-width="2"/>
+  <text x="810" y="175" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Ver</text>
+  <text x="810" y="190" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Ofertas</text>
+  <text x="810" y="205" text-anchor="middle" font-size="10" fill="white">Recibidas</text>
+  
+  <!-- Decision: Cliente evalúa oferta -->
+  <polygon points="950,180 990,160 1030,180 990,200" fill="#9C27B0" opacity="0.8" stroke="#6A1B9A" stroke-width="2"/>
+  <text x="990" y="185" text-anchor="middle" font-size="12" font-weight="bold" fill="white">¿Aceptar?</text>
+  
+  <!-- 8a. Aceptar oferta -->
+  <rect x="1050" y="120" width="100" height="50" rx="10" fill="#4CAF50" opacity="0.8" stroke="#2E7D32" stroke-width="2"/>
+  <text x="1100" y="140" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Aceptar</text>
+  <text x="1100" y="155" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Oferta</text>
+  
+  <!-- 8b. Rechazar oferta -->
+  <rect x="1050" y="200" width="100" height="50" rx="10" fill="#F44336" opacity="0.8" stroke="#C62828" stroke-width="2"/>
+  <text x="1100" y="220" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Rechazar</text>
+  <text x="1100" y="235" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Oferta</text>
+  
+  <!-- End states -->
+  <!-- Solicitud cerrada -->
+  <rect x="1050" y="550" width="100" height="50" rx="10" fill="#607D8B" opacity="0.8" stroke="#37474F" stroke-width="2"/>
+  <text x="1100" y="570" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Solicitud</text>
+  <text x="1100" y="585" text-anchor="middle" font-size="12" font-weight="bold" fill="white">CERRADA</text>
+  
+  <!-- Solicitud sigue abierta -->
+  <rect x="900" y="300" width="100" height="50" rx="10" fill="#795548" opacity="0.8" stroke="#3E2723" stroke-width="2"/>
+  <text x="950" y="320" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Solicitud</text>
+  <text x="950" y="335" text-anchor="middle" font-size="12" font-weight="bold" fill="white">ABIERTA</text>
+  
+  <!-- Flow arrows -->
+  <!-- Initial flow -->
+  <line x1="120" y1="180" x2="150" y2="180" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="270" y1="180" x2="300" y2="180" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- Down to system -->
+  <line x1="360" y1="210" x2="360" y2="250" stroke="#333" stroke-width="2"/>
+  <line x1="360" y1="250" x2="510" y2="250" stroke="#333" stroke-width="2"/>
+  <line x1="510" y1="250" x2="510" y2="550" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- System to provider -->
+  <line x1="510" y1="550" x2="510" y2="410" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- Provider flow -->
+  <line x1="570" y1="380" x2="600" y2="380" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- Down to system again -->
+  <line x1="660" y1="410" x2="660" y2="450" stroke="#333" stroke-width="2"/>
+  <line x1="660" y1="450" x2="810" y2="450" stroke="#333" stroke-width="2"/>
+  <line x1="810" y1="450" x2="810" y2="550" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- Back to client -->
+  <line x1="810" y1="550" x2="810" y2="210" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- To decision -->
+  <line x1="870" y1="180" x2="950" y2="180" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- Decision outcomes -->
+  <line x1="1030" y1="170" x2="1050" y2="145" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="1040" y="155" font-size="10" fill="#4CAF50">SÍ</text>
+  
+  <line x1="1030" y1="190" x2="1050" y2="225" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="1040" y="210" font-size="10" fill="#F44336">NO</text>
+  
+  <!-- Accept path -->
+  <line x1="1100" y1="170" x2="1100" y2="550" stroke="#4CAF50" stroke-width="3" marker-end="url(#arrow)"/>
+  
+  <!-- Reject path -->
+  <line x1="1050" y1="225" x2="950" y2="300" stroke="#F44336" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- Loop back for more offers -->
+  <path d="M 900 325 Q 800 325 700 325 Q 600 325 560 350" stroke="#795548" stroke-width="2" fill="none" stroke-dasharray="5,5" marker-end="url(#arrow)"/>
+  <text x="730" y="320" text-anchor="middle" font-size="10" fill="#795548">Más ofertas posibles</text>
+  
+  <!-- Notifications -->
+  <g>
+    <rect x="100" y="680" width="1000" height="80" rx="10" fill="#E1F5FE" stroke="#0277BD" stroke-width="2"/>
+    <text x="600" y="705" text-anchor="middle" font-size="16" font-weight="bold" fill="#01579B">Notificaciones del Sistema</text>
+    
+    <text x="120" y="730" font-size="12" fill="#0277BD">• Cliente: Notificación cuando recibe nueva oferta</text>
+    <text x="120" y="745" font-size="12" fill="#0277BD">• Proveedor: Notificación cuando cliente acepta/rechaza oferta</text>
+    
+    <text x="600" y="730" font-size="12" fill="#0277BD">• Sistema: Logs de todas las transacciones</text>
+    <text x="600" y="745" font-size="12" fill="#0277BD">• Base de datos: Auditoria de cambios de estado</text>
+  </g>
+  
+  <!-- States legend -->
+  <g>
+    <rect x="100" y="50" width="400" height="25" fill="#fff" stroke="#333" stroke-width="1" rx="3"/>
+    <text x="110" y="67" font-size="12" font-weight="bold" fill="#333">Estados de Solicitud:</text>
+    
+    <rect x="230" y="55" width="15" height="15" fill="#4CAF50"/>
+    <text x="250" y="67" font-size="11" fill="#333">ABIERTA</text>
+    
+    <rect x="300" y="55" width="15" height="15" fill="#FF9800"/>
+    <text x="320" y="67" font-size="11" fill="#333">NEGOCIACIÓN</text>
+    
+    <rect x="400" y="55" width="15" height="15" fill="#607D8B"/>
+    <text x="420" y="67" font-size="11" fill="#333">CERRADA</text>
+    
+    <rect x="480" y="55" width="15" height="15" fill="#F44336"/>
+    <text x="500" y="67" font-size="11" fill="#333">CANCELADA</text>
+  </g>
+</svg>

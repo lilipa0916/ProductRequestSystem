@@ -1,0 +1,38 @@
+﻿@page "/manage"
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+@using ProductRequestSystem.Client.Enum
+@attribute [Authorize]
+@inject AuthenticationStateProvider AuthStateProvider
+@inject IAuthService AuthService
+@inject IProductRequestService ProductRequestService
+@inject IOfferService OfferService
+
+<PageTitle>Gestión</PageTitle>
+
+<AuthorizeView>
+    <Authorized>
+        @if (currentUser != null)
+        {
+            <h1>Bienvenido, @currentUser.FirstName @currentUser.LastName</h1>
+            
+            @if (currentUser.Role == UserRole.Client)
+            {
+                <ClientView />
+            }
+            else if (currentUser.Role == UserRole.Provider)
+            {
+                <ProviderView />
+            }
+        }
+    </Authorized>
+</AuthorizeView>
+
+@code {
+    private UserDto? currentUser;
+
+    protected override async Task OnInitializedAsync()
+    {
+        currentUser = await AuthService.GetCurrentUserAsync();
+    }
+}

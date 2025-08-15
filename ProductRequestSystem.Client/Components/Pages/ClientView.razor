@@ -1,0 +1,411 @@
+﻿@using ProductRequestSystem.Client.Models
+@using ProductRequestSystem.Client.Services
+@using ProductRequestSystem.Client.Enum
+@inject IProductRequestService ProductRequestService
+@inject IOfferService OfferService
+@inject IJSRuntime JSRuntime
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h4>Crear Solicitud de Producto</h4>
+            </div>
+            <div class="card-body">
+                @if (!string.IsNullOrEmpty(message))
+                {
+                    <div class="alert @(isSuccess ? "alert-success" : "alert-danger")">
+                        @message
+                    </div>
+                }
+
+                <EditForm Model="@createModel" OnValidSubmit="@CreateRequest">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+
+                    <div class="mb-3">
+                        <label class="form-label">Nombre del Producto:</label>
+                        <InputText @bind-Value="createModel.ProductName" class="form-control" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Descripción:</label>
+                        <InputTextArea @bind-Value="createModel.Description" class="form-control" rows="3" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Cantidad:</label>
+                        <InputNumber @bind-Value="createModel.Quantity" class="form-control" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Fecha Requerida:</label>
+                        <InputDate @bind-Value="createModel.RequiredDate" class="form-control" />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" disabled="@isCreating">
+                        @if (isCreating)
+                        {
+                            <span class="spinner-border spinner-border-sm me-2"></span>
+                        }
+                        Crear Solicitud
+                    </button>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h4>Mis Solicitudes</h4>
+                <button class="btn btn-sm btn-outline-secondary" @onclick="LoadRequests">
+                    <i class="bi bi-arrow-clockwise"></i> Actualizar
+                </button>
+            </div>
+            <div class="card-body">
+                @if (isLoading)
+                {
+                    <div class="text-center">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Cargando...</span>
+                        </div>
+                    </div>
+                }
+                else if (requests.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Estado</th>
+                                    <th>Ofertas</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var request in requests)
+                                {
+                                    <tr>
+                                        <td>
+                                            <strong>@request.ProductName</strong>
+                                            <br />
+                                            <small class="text-muted">@request.Description</small>
+                                        </td>
+                                        <td>@request.Quantity</td>
+                                        <td>
+                                            <span class="badge bg-@GetStatusColor(request.Status)">
+                                                @GetStatusText(request.Status)
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-info">@request.Offers.Count</span>
+                                        </td>
+                                        <td>
+                                            @if (request.Offers.Any())
+                                            {
+                                                <button class="btn btn-sm btn-info" @onclick="() => ShowOffers(request)">
+                                                    <i class="bi bi-eye"></i> Ver Ofertas
+                                                </button>
+                                            }
+                                            else
+                                            {
+                                                <small class="text-muted">Sin ofertas</small>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center text-muted">
+                        <i class="bi bi-inbox display-4"></i>
+                        <p class="mt-2">No tienes solicitudes creadas.</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Modal para mostrar ofertas *@
+@if (selectedRequest != null)
+{
+    <div class="modal fade show d-block" style="background-color: rgba(0,0,0,0.5);" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-tags"></i> Ofertas para @selectedRequest.ProductName
+                    </h5>
+                    <button type="button" class="btn-close" @onclick="CloseModal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <strong>Descripción:</strong>
+                            <p class="text-muted">@selectedRequest.Description</p>
+                        </div>
+                        <div class="col-md-3">
+                            <strong>Cantidad:</strong>
+                            <p class="text-muted">@selectedRequest.Quantity</p>
+                        </div>
+                        <div class="col-md-3">
+                            <strong>Fecha Requerida:</strong>
+                            <p class="text-muted">@selectedRequest.RequiredDate.ToString("dd/MM/yyyy")</p>
+                        </div>
+                    </div>
+
+                    @if (selectedRequest.Offers.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Proveedor</th>
+                                        <th>Precio</th>
+                                        <th>Días Estimados</th>
+                                        <th>Comentarios</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var offer in selectedRequest.Offers)
+                                    {
+                                        <tr class="@(offer.Status == OfferStatus.Accepted ? "table-success" : offer.Status == OfferStatus.Rejected ? "table-danger" : "")">
+                                            <td>
+                                                <strong>@offer.ProviderName</strong>
+                                                <br />
+                                                <small class="text-muted">@offer.CreatedAt.ToString("dd/MM/yyyy HH:mm")</small>
+                                            </td>
+                                            <td class="text-success">
+                                                <strong>$@offer.Price.ToString("N2")</strong>
+                                            </td>
+                                            <td>
+                                                @offer.EstimatedDays días
+                                            </td>
+                                            <td>
+                                                @if (!string.IsNullOrEmpty(offer.Comments))
+                                                {
+                                                    <span>@offer.Comments</span>
+                                                }
+                                                else
+                                                {
+                                                    <em class="text-muted">Sin comentarios</em>
+                                                }
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-@GetOfferStatusColor(offer.Status)">
+                                                    @GetOfferStatusText(offer.Status)
+                                                </span>
+                                            </td>
+                                            <td>
+                                                @if (offer.Status == OfferStatus.Pending)
+                                                {
+                                                    <div class="btn-group" role="group">
+                                                        <button class="btn btn-success btn-sm" @onclick="() => AcceptOffer(offer)">
+                                                            <i class="bi bi-check-circle"></i> Aceptar
+                                                        </button>
+                                                        <button class="btn btn-danger btn-sm" @onclick="() => RejectOffer(offer)">
+                                                            <i class="bi bi-x-circle"></i> Rechazar
+                                                        </button>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <small class="text-muted">@GetOfferStatusText(offer.Status)</small>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center text-muted">
+                            <i class="bi bi-inbox display-4"></i>
+                            <p class="mt-2">No hay ofertas para esta solicitud.</p>
+                        </div>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="CloseModal">
+                        <i class="bi bi-x"></i> Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private CreateProductRequestDto createModel = new() { RequiredDate = DateTime.Today.AddDays(1) };
+    private List<ProductRequestDto> requests = new();
+    private ProductRequestDto? selectedRequest;
+    private bool isCreating = false;
+    private bool isLoading = false;
+    private string message = string.Empty;
+    private bool isSuccess = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadRequests();
+    }
+
+    private async Task CreateRequest()
+    {
+        isCreating = true;
+        message = string.Empty;
+
+        try
+        {
+            var result = await ProductRequestService.CreateAsync(createModel);
+            if (result != null)
+            {
+                message = "Solicitud creada exitosamente.";
+                isSuccess = true;
+                createModel = new CreateProductRequestDto { RequiredDate = DateTime.Today.AddDays(1) };
+                await LoadRequests();
+            }
+            else
+            {
+                message = "Error al crear la solicitud.";
+                isSuccess = false;
+            }
+        }
+        catch (Exception ex)
+        {
+            message = $"Error: {ex.Message}";
+            isSuccess = false;
+        }
+        finally
+        {
+            isCreating = false;
+        }
+    }
+
+    private async Task LoadRequests()
+    {
+        isLoading = true;
+        try
+        {
+            var result = await ProductRequestService.GetMyRequestsAsync();
+            requests = result.ToList();
+        }
+        catch (Exception ex)
+        {
+            message = $"Error al cargar solicitudes: {ex.Message}";
+            isSuccess = false;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void ShowOffers(ProductRequestDto request)
+    {
+        selectedRequest = request;
+    }
+
+    private void CloseModal()
+    {
+        selectedRequest = null;
+    }
+
+    private async Task AcceptOffer(OfferDto offer)
+    {
+        try
+        {
+            var result = await OfferService.UpdateStatusAsync(offer.Id, OfferStatus.Accepted);
+            if (result != null)
+            {
+                await LoadRequests();
+                CloseModal();
+                message = "Oferta aceptada exitosamente.";
+                isSuccess = true;
+                await InvokeAsync(StateHasChanged);
+            }
+            else
+            {
+                message = "Error al aceptar la oferta.";
+                isSuccess = false;
+            }
+        }
+        catch (Exception ex)
+        {
+            message = $"Error al aceptar oferta: {ex.Message}";
+            isSuccess = false;
+        }
+    }
+
+    private async Task RejectOffer(OfferDto offer)
+    {
+        try
+        {
+            var result = await OfferService.UpdateStatusAsync(offer.Id, OfferStatus.Rejected);
+            if (result != null)
+            {
+                await LoadRequests();
+                CloseModal();
+                message = "Oferta rechazada exitosamente.";
+                isSuccess = true;
+                await InvokeAsync(StateHasChanged);
+            }
+            else
+            {
+                message = "Error al rechazar la oferta.";
+                isSuccess = false;
+            }
+        }
+        catch (Exception ex)
+        {
+            message = $"Error al rechazar oferta: {ex.Message}";
+            isSuccess = false;
+        }
+    }
+
+    private string GetStatusColor(ProductRequestStatus status) => status switch
+    {
+        ProductRequestStatus.Open => "success",
+        ProductRequestStatus.InNegotiation => "warning",
+        ProductRequestStatus.Closed => "primary",
+        ProductRequestStatus.Cancelled => "danger",
+        _ => "secondary"
+    };
+
+    private string GetStatusText(ProductRequestStatus status) => status switch
+    {
+        ProductRequestStatus.Open => "Abierta",
+        ProductRequestStatus.InNegotiation => "En Negociación",
+        ProductRequestStatus.Closed => "Cerrada",
+        ProductRequestStatus.Cancelled => "Cancelada",
+        _ => "Desconocido"
+    };
+
+    private string GetOfferStatusColor(OfferStatus status) => status switch
+    {
+        OfferStatus.Pending => "warning",
+        OfferStatus.Accepted => "success",
+        OfferStatus.Rejected => "danger",
+        OfferStatus.CounterOffered => "info",
+        _ => "secondary"
+    };
+
+    private string GetOfferStatusText(OfferStatus status) => status switch
+    {
+        OfferStatus.Pending => "Pendiente",
+        OfferStatus.Accepted => "Aceptada",
+        OfferStatus.Rejected => "Rechazada",
+        OfferStatus.CounterOffered => "Contraofertada",
+        _ => "Desconocido"
+    };
+}

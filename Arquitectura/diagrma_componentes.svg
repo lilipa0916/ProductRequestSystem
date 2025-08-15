@@ -1,0 +1,260 @@
+<svg viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1400" height="900" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="700" y="30" text-anchor="middle" font-size="24" font-weight="bold" fill="#1a1a1a">
+    Diagrama de Componentes - Clean Architecture
+  </text>
+  
+  <!-- Client Layer -->
+  <g>
+    <rect x="50" y="70" width="300" height="250" rx="15" fill="#4CAF50" opacity="0.1" stroke="#4CAF50" stroke-width="3"/>
+    <text x="200" y="95" text-anchor="middle" font-size="18" font-weight="bold" fill="#2E7D32">Client Layer (Blazor WASM)</text>
+    
+    <!-- Components -->
+    <rect x="70" y="110" width="100" height="40" rx="5" fill="#4CAF50" opacity="0.7" stroke="#2E7D32" stroke-width="2"/>
+    <text x="120" y="135" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Pages</text>
+    
+    <rect x="180" y="110" width="100" height="40" rx="5" fill="#4CAF50" opacity="0.7" stroke="#2E7D32" stroke-width="2"/>
+    <text x="230" y="135" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Components</text>
+    
+    <rect x="70" y="160" width="100" height="40" rx="5" fill="#4CAF50" opacity="0.7" stroke="#2E7D32" stroke-width="2"/>
+    <text x="120" y="185" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Services</text>
+    
+    <rect x="180" y="160" width="100" height="40" rx="5" fill="#4CAF50" opacity="0.7" stroke="#2E7D32" stroke-width="2"/>
+    <text x="230" y="185" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Models</text>
+    
+    <rect x="70" y="210" width="210" height="40" rx="5" fill="#4CAF50" opacity="0.7" stroke="#2E7D32" stroke-width="2"/>
+    <text x="175" y="235" text-anchor="middle" font-size="12" font-weight="bold" fill="white">AuthStateProvider</text>
+    
+    <rect x="70" y="260" width="210" height="40" rx="5" fill="#4CAF50" opacity="0.7" stroke="#2E7D32" stroke-width="2"/>
+    <text x="175" y="285" text-anchor="middle" font-size="12" font-weight="bold" fill="white">HttpClient + JWT</text>
+  </g>
+  
+  <!-- Web API Layer -->
+  <g>
+    <rect x="450" y="70" width="300" height="250" rx="15" fill="#2196F3" opacity="0.1" stroke="#2196F3" stroke-width="3"/>
+    <text x="600" y="95" text-anchor="middle" font-size="18" font-weight="bold" fill="#1565C0">Web API Layer</text>
+    
+    <!-- Controllers -->
+    <rect x="470" y="110" width="80" height="40" rx="5" fill="#2196F3" opacity="0.7" stroke="#1565C0" stroke-width="2"/>
+    <text x="510" y="135" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Auth</text>
+    <text x="510" y="148" text-anchor="middle" font-size="11" fill="white">Controller</text>
+    
+    <rect x="560" y="110" width="80" height="40" rx="5" fill="#2196F3" opacity="0.7" stroke="#1565C0" stroke-width="2"/>
+    <text x="600" y="135" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Requests</text>
+    <text x="600" y="148" text-anchor="middle" font-size="11" fill="white">Controller</text>
+    
+    <rect x="650" y="110" width="80" height="40" rx="5" fill="#2196F3" opacity="0.7" stroke="#1565C0" stroke-width="2"/>
+    <text x="690" y="135" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Offers</text>
+    <text x="690" y="148" text-anchor="middle" font-size="11" fill="white">Controller</text>
+    
+    <!-- Middleware -->
+    <rect x="470" y="160" width="260" height="40" rx="5" fill="#2196F3" opacity="0.7" stroke="#1565C0" stroke-width="2"/>
+    <text x="600" y="185" text-anchor="middle" font-size="12" font-weight="bold" fill="white">JWT Authentication Middleware</text>
+    
+    <rect x="470" y="210" width="130" height="40" rx="5" fill="#2196F3" opacity="0.7" stroke="#1565C0" stroke-width="2"/>
+    <text x="535" y="235" text-anchor="middle" font-size="12" font-weight="bold" fill="white">CORS Policy</text>
+    
+    <rect x="610" y="210" width="120" height="40" rx="5" fill="#2196F3" opacity="0.7" stroke="#1565C0" stroke-width="2"/>
+    <text x="670" y="235" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Swagger</text>
+    
+    <rect x="470" y="260" width="260" height="40" rx="5" fill="#2196F3" opacity="0.7" stroke="#1565C0" stroke-width="2"/>
+    <text x="600" y="285" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Exception Handling</text>
+  </g>
+  
+  <!-- Application Layer -->
+  <g>
+    <rect x="850" y="70" width="300" height="250" rx="15" fill="#FF9800" opacity="0.1" stroke="#FF9800" stroke-width="3"/>
+    <text x="1000" y="95" text-anchor="middle" font-size="18" font-weight="bold" fill="#E65100">Application Layer</text>
+    
+    <!-- Services -->
+    <rect x="870" y="110" width="80" height="40" rx="5" fill="#FF9800" opacity="0.7" stroke="#E65100" stroke-width="2"/>
+    <text x="910" y="135" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Auth</text>
+    <text x="910" y="148" text-anchor="middle" font-size="11" fill="white">Service</text>
+    
+    <rect x="960" y="110" width="80" height="40" rx="5" fill="#FF9800" opacity="0.7" stroke="#E65100" stroke-width="2"/>
+    <text x="1000" y="135" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Request</text>
+    <text x="1000" y="148" text-anchor="middle" font-size="11" fill="white">Service</text>
+    
+    <rect x="1050" y="110" width="80" height="40" rx="5" fill="#FF9800" opacity="0.7" stroke="#E65100" stroke-width="2"/>
+    <text x="1090" y="135" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Offer</text>
+    <text x="1090" y="148" text-anchor="middle" font-size="11" fill="white">Service</text>
+    
+    <!-- DTOs -->
+    <rect x="870" y="160" width="120" height="40" rx="5" fill="#FF9800" opacity="0.7" stroke="#E65100" stroke-width="2"/>
+    <text x="930" y="185" text-anchor="middle" font-size="12" font-weight="bold" fill="white">DTOs</text>
+    
+    <rect x="1000" y="160" width="130" height="40" rx="5" fill="#FF9800" opacity="0.7" stroke="#E65100" stroke-width="2"/>
+    <text x="1065" y="185" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Validators</text>
+    
+    <!-- Cross-cutting -->
+    <rect x="870" y="210" width="120" height="40" rx="5" fill="#FF9800" opacity="0.7" stroke="#E65100" stroke-width="2"/>
+    <text x="930" y="235" text-anchor="middle" font-size="12" font-weight="bold" fill="white">AutoMapper</text>
+    
+    <rect x="1000" y="210" width="130" height="40" rx="5" fill="#FF9800" opacity="0.7" stroke="#E65100" stroke-width="2"/>
+    <text x="1065" y="235" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Extensions</text>
+    
+    <rect x="870" y="260" width="260" height="40" rx="5" fill="#FF9800" opacity="0.7" stroke="#E65100" stroke-width="2"/>
+    <text x="1000" y="285" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Business Logic</text>
+  </g>
+  
+  <!-- Infrastructure Layer -->
+  <g>
+    <rect x="450" y="380" width="500" height="180" rx="15" fill="#9C27B0" opacity="0.1" stroke="#9C27B0" stroke-width="3"/>
+    <text x="700" y="405" text-anchor="middle" font-size="18" font-weight="bold" fill="#6A1B9A">Infrastructure Layer</text>
+    
+    <!-- Data Access -->
+    <rect x="470" y="420" width="120" height="40" rx="5" fill="#9C27B0" opacity="0.7" stroke="#6A1B9A" stroke-width="2"/>
+    <text x="530" y="445" text-anchor="middle" font-size="12" font-weight="bold" fill="white">DbContext</text>
+    
+    <rect x="600" y="420" width="100" height="40" rx="5" fill="#9C27B0" opacity="0.7" stroke="#6A1B9A" stroke-width="2"/>
+    <text x="650" y="445" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Repositories</text>
+    
+    <rect x="710" y="420" width="100" height="40" rx="5" fill="#9C27B0" opacity="0.7" stroke="#6A1B9A" stroke-width="2"/>
+    <text x="760" y="445" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Unit of Work</text>
+    
+    <rect x="820" y="420" width="110" height="40" rx="5" fill="#9C27B0" opacity="0.7" stroke="#6A1B9A" stroke-width="2"/>
+    <text x="875" y="445" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Migrations</text>
+    
+    <!-- Identity -->
+    <rect x="470" y="470" width="130" height="40" rx="5" fill="#9C27B0" opacity="0.7" stroke="#6A1B9A" stroke-width="2"/>
+    <text x="535" y="495" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Identity Provider</text>
+    
+    <rect x="610" y="470" width="130" height="40" rx="5" fill="#9C27B0" opacity="0.7" stroke="#6A1B9A" stroke-width="2"/>
+    <text x="675" y="495" text-anchor="middle" font-size="12" font-weight="bold" fill="white">JWT Generator</text>
+    
+    <rect x="750" y="470" width="180" height="40" rx="5" fill="#9C27B0" opacity="0.7" stroke="#6A1B9A" stroke-width="2"/>
+    <text x="840" y="495" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Configuration Extensions</text>
+    
+    <!-- ORM -->
+    <rect x="470" y="520" width="460" height="30" rx="5" fill="#9C27B0" opacity="0.7" stroke="#6A1B9A" stroke-width="2"/>
+    <text x="700" y="540" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Entity Framework Core</text>
+  </g>
+  
+  <!-- Domain Layer -->
+  <g>
+    <rect x="1000" y="380" width="300" height="180" rx="15" fill="#F44336" opacity="0.1" stroke="#F44336" stroke-width="3"/>
+    <text x="1150" y="405" text-anchor="middle" font-size="18" font-weight="bold" fill="#C62828">Domain Layer</text>
+    
+    <!-- Entities -->
+    <rect x="1020" y="420" width="70" height="40" rx="5" fill="#F44336" opacity="0.7" stroke="#C62828" stroke-width="2"/>
+    <text x="1055" y="445" text-anchor="middle" font-size="12" font-weight="bold" fill="white">User</text>
+    
+    <rect x="1100" y="420" width="80" height="40" rx="5" fill="#F44336" opacity="0.7" stroke="#C62828" stroke-width="2"/>
+    <text x="1140" y="445" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Request</text>
+    
+    <rect x="1190" y="420" width="70" height="40" rx="5" fill="#F44336" opacity="0.7" stroke="#C62828" stroke-width="2"/>
+    <text x="1225" y="445" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Offer</text>
+    
+    <!-- Value Objects & Interfaces -->
+    <rect x="1020" y="470" width="80" height="40" rx="5" fill="#F44336" opacity="0.7" stroke="#C62828" stroke-width="2"/>
+    <text x="1060" y="495" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Interfaces</text>
+    
+    <rect x="1110" y="470" width="70" height="40" rx="5" fill="#F44336" opacity="0.7" stroke="#C62828" stroke-width="2"/>
+    <text x="1145" y="495" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Enums</text>
+    
+    <rect x="1190" y="470" width="70" height="40" rx="5" fill="#F44336" opacity="0.7" stroke="#C62828" stroke-width="2"/>
+    <text x="1225" y="495" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Common</text>
+    
+    <!-- Business Rules -->
+    <rect x="1020" y="520" width="240" height="30" rx="5" fill="#F44336" opacity="0.7" stroke="#C62828" stroke-width="2"/>
+    <text x="1140" y="540" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Business Rules &amp; Constraints</text>
+  </g>
+  
+  <!-- Database -->
+  <g>
+    <rect x="450" y="620" width="500" height="120" rx="15" fill="#607D8B" opacity="0.1" stroke="#607D8B" stroke-width="3"/>
+    <text x="700" y="645" text-anchor="middle" font-size="18" font-weight="bold" fill="#37474F">Database Layer</text>
+    
+    <!-- Tables -->
+    <rect x="470" y="660" width="90" height="40" rx="5" fill="#607D8B" opacity="0.7" stroke="#37474F" stroke-width="2"/>
+    <text x="515" y="685" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Users</text>
+    
+    <rect x="570" y="660" width="110" height="40" rx="5" fill="#607D8B" opacity="0.7" stroke="#37474F" stroke-width="2"/>
+    <text x="625" y="685" text-anchor="middle" font-size="12" font-weight="bold" fill="white">ProductRequests</text>
+    
+    <rect x="690" y="660" width="90" height="40" rx="5" fill="#607D8B" opacity="0.7" stroke="#37474F" stroke-width="2"/>
+    <text x="735" y="685" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Offers</text>
+    
+    <rect x="790" y="660" width="140" height="40" rx="5" fill="#607D8B" opacity="0.7" stroke="#37474F" stroke-width="2"/>
+    <text x="860" y="685" text-anchor="middle" font-size="12" font-weight="bold" fill="white">AspNet Identity</text>
+    
+    <!-- SQL Server -->
+    <rect x="470" y="710" width="460" height="20" rx="5" fill="#607D8B" opacity="0.9" stroke="#37474F" stroke-width="2"/>
+    <text x="700" y="724" text-anchor="middle" font-size="14" font-weight="bold" fill="white">SQL Server LocalDB</text>
+  </g>
+  
+  <!-- External Services -->
+  <g>
+    <rect x="50" y="380" width="300" height="120" rx="15" fill="#795548" opacity="0.1" stroke="#795548" stroke-width="3"/>
+    <text x="200" y="405" text-anchor="middle" font-size="18" font-weight="bold" fill="#3E2723">External Services</text>
+    
+    <rect x="70" y="420" width="100" height="35" rx="5" fill="#795548" opacity="0.7" stroke="#3E2723" stroke-width="2"/>
+    <text x="120" y="442" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Serilog</text>
+    
+    <rect x="180" y="420" width="100" height="35" rx="5" fill="#795548" opacity="0.7" stroke="#3E2723" stroke-width="2"/>
+    <text x="230" y="442" text-anchor="middle" font-size="12" font-weight="bold" fill="white">LocalStorage</text>
+    
+    <rect x="70" y="460" width="210" height="30" rx="5" fill="#795548" opacity="0.7" stroke="#3E2723" stroke-width="2"/>
+    <text x="175" y="480" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Browser APIs</text>
+  </g>
+  
+  <!-- Dependencies arrows -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+  
+  <!-- Client to API -->
+  <line x1="350" y1="200" x2="450" y2="200" stroke="#333" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="400" y="195" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">HTTPS</text>
+  <text x="400" y="210" text-anchor="middle" font-size="10" fill="#666">REST API</text>
+  
+  <!-- API to Application -->
+  <line x1="750" y1="200" x2="850" y2="200" stroke="#333" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="800" y="195" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">DI</text>
+  
+  <!-- Application to Infrastructure -->
+  <line x1="950" y1="320" x2="700" y2="380" stroke="#333" stroke-width="3" marker-end="url(#arrow)"/>
+  
+  <!-- Application to Domain -->
+  <line x1="1150" y1="320" x2="1150" y2="380" stroke="#333" stroke-width="3" marker-end="url(#arrow)"/>
+  
+  <!-- Infrastructure to Database -->
+  <line x1="700" y1="560" x2="700" y2="620" stroke="#333" stroke-width="3" marker-end="url(#arrow)"/>
+  
+  <!-- Client to External -->
+  <line x1="200" y1="320" x2="200" y2="380" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- Technology Stack -->
+  <g>
+    <rect x="50" y="780" width="1300" height="80" rx="10" fill="#E3F2FD" stroke="#1976D2" stroke-width="2"/>
+    <text x="700" y="805" text-anchor="middle" font-size="16" font-weight="bold" fill="#0D47A1">Technology Stack</text>
+    
+    <text x="70" y="830" font-size="12" fill="#1565C0">Frontend: Blazor WebAssembly, Bootstrap 5, JavaScript Interop</text>
+    <text x="70" y="845" font-size="12" fill="#1565C0">Backend: ASP.NET Core 8, Entity Framework Core, AutoMapper, FluentValidation</text>
+    
+    <text x="700" y="830" font-size="12" fill="#1565C0">Security: JWT Bearer, ASP.NET Core Identity, HTTPS, CORS</text>
+    <text x="700" y="845" font-size="12" fill="#1565C0">Database: SQL Server, Code First Migrations, LINQ</text>
+  </g>
+  
+  <!-- Component Interfaces -->
+  <g>
+    <rect x="1200" y="100" width="150" height="200" rx="10" fill="#FFF3E0" stroke="#F57C00" stroke-width="2"/>
+    <text x="1275" y="125" text-anchor="middle" font-size="14" font-weight="bold" fill="#E65100">Interfaces</text>
+    
+    <text x="1210" y="150" font-size="11" fill="#E65100">IAuthService</text>
+    <text x="1210" y="165" font-size="11" fill="#E65100">IProductRequestService</text>
+    <text x="1210" y="180" font-size="11" fill="#E65100">IOfferService</text>
+    <text x="1210" y="195" font-size="11" fill="#E65100">IRepository&lt;T&gt;</text>
+    <text x="1210" y="210" font-size="11" fill="#E65100">IUnitOfWork</text>
+    <text x="1210" y="225" font-size="11" fill="#E65100">IProductRequestRepo</text>
+    <text x="1210" y="240" font-size="11" fill="#E65100">IOfferRepository</text>
+    <text x="1210" y="255" font-size="11" fill="#E65100">UserManager&lt;User&gt;</text>
+    <text x="1210" y="270" font-size="11" fill="#E65100">SignInManager&lt;User&gt;</text>
+    <text x="1210" y="285" font-size="11" fill="#E65100">HttpClient</text>
+  </g>
+</svg>
