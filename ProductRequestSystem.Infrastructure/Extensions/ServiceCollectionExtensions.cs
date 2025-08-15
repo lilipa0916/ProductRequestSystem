@@ -9,6 +9,7 @@ using ProductRequestSystem.Infrastructure.Data;
 using ProductRequestSystem.Infrastructure.Repositories;
 
 
+
 namespace ProductRequestSystem.Infrastructure.Extensions
 {
     public static class ServiceCollectionExtensions
@@ -21,7 +22,7 @@ namespace ProductRequestSystem.Infrastructure.Extensions
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-            // Identity - VERSIÓN MÁS ESPECÍFICA
+            // Identity Core - ESTA VERSIÓN SIEMPRE FUNCIONA
             services.AddIdentityCore<User>(options =>
             {
                 // Password settings
@@ -36,8 +37,11 @@ namespace ProductRequestSystem.Infrastructure.Extensions
             })
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>()
-            .AddSignInManager()
             .AddDefaultTokenProviders();
+
+            // Agregar UserManager y RoleManager manualmente
+            services.AddScoped<UserManager<User>>();
+            services.AddScoped<RoleManager<IdentityRole>>();
 
             // Repositories
             services.AddScoped<IUnitOfWork, UnitOfWork>();

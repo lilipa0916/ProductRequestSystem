@@ -1,4 +1,5 @@
 ﻿using ProductRequestSystem.Application.DTOs;
+using ProductRequestSystem.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

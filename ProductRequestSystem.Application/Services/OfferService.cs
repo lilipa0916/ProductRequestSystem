@@ -5,11 +5,6 @@ using ProductRequestSystem.Application.Interfaces;
 using ProductRequestSystem.Domain.Entities;
 using ProductRequestSystem.Domain.Enums;
 using ProductRequestSystem.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProductRequestSystem.Application.Services
 {
@@ -53,6 +48,61 @@ namespace ProductRequestSystem.Application.Services
             productRequest.UpdatedAt = DateTime.UtcNow;
             await _unitOfWork.ProductRequests.UpdateAsync(productRequest);
 
-            return offer;
+            await _unitOfWork.SaveChangesAsync();
+
+            var result = await _unitOfWork.Offers.GetByIdWithDetailsAsync(created.Id);
+            return _mapper.Map<OfferDto>(result!);
+        }
+
+        public async Task<IEnumerable<OfferDto>> GetByProviderIdAsync(string providerId)
+        {
+            var offers = await _unitOfWork.Offers.GetByProviderIdAsync(providerId);
+            return _mapper.Map<IEnumerable<OfferDto>>(offers);
+        }
+
+        public async Task<OfferDto> UpdateStatusAsync(UpdateOfferStatusDto dto, string clientId)
+        {
+            var offer = await _unitOfWork.Offers.GetByIdWithDetailsAsync(dto.OfferId);
+            if (offer == null)
+            {
+                throw new ArgumentException("Oferta no encontrada");
+            }
+
+            // Verificar que el cliente es dueño de la solicitud
+            if (offer.ProductRequest.ClientId != clientId)
+            {
+                throw new UnauthorizedAccessException("No autorizado para actualizar esta oferta");
+            }
+
+            offer.Status = dto.Status;
+            offer.UpdatedAt = DateTime.UtcNow;
+
+            // Si se acepta la oferta, cerrar la solicitud y rechazar otras ofertas
+            if (dto.Status == OfferStatus.Accepted)
+            {
+                offer.ProductRequest.Status = ProductRequestStatus.Closed;
+                offer.ProductRequest.UpdatedAt = DateTime.UtcNow;
+
+                // Rechazar otras ofertas de la misma solicitud
+                var otherOffers = await _unitOfWork.Offers.GetByProductRequestIdAsync(offer.ProductRequestId);
+                foreach (var otherOffer in otherOffers.Where(o => o.Id != offer.Id))
+                {
+                    otherOffer.Status = OfferStatus.Rejected;
+                    otherOffer.UpdatedAt = DateTime.UtcNow;
+                    await _unitOfWork.Offers.UpdateAsync(otherOffer);
+                }
+            }
+
+            await _unitOfWork.Offers.UpdateAsync(offer);
+            await _unitOfWork.SaveChangesAsync();
+
+            return _mapper.Map<OfferDto>(offer);
+        }
+
+        public async Task<OfferDto?> GetByIdAsync(int id)
+        {
+            var offer = await _unitOfWork.Offers.GetByIdWithDetailsAsync(id);
+            return offer != null ? _mapper.Map<OfferDto>(offer) : null;
         }
     }
+}

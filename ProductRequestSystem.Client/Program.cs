@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 using ProductRequestSystem.Application.Interfaces;
 using ProductRequestSystem.Application.Services;
 using ProductRequestSystem.Client.Components;
+using ProductRequestSystem.Client.Services;
 
 namespace ProductRequestSystem.Client
 {
