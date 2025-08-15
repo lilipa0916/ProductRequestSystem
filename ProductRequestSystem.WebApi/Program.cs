@@ -1,6 +1,7 @@
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using ProductRequestSystem.Application.Extensions;
 using ProductRequestSystem.Infrastructure.Extensions;
 using Serilog;
 using System.Text;
@@ -9,7 +10,7 @@ namespace ProductRequestSystem.WebApi
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static  void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -96,7 +97,7 @@ namespace ProductRequestSystem.WebApi
 
 
             var app = builder.Build();
-            await app.Services.InitializeDatabaseAsync();
+             app.Services.InitializeDatabaseAsync();
 
 
             // Configure the HTTP request pipeline.

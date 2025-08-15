@@ -20,7 +20,7 @@ namespace ProductRequestSystem.Application.Extensions
             // FluentValidation
             services.AddValidatorsFromAssembly(typeof(CreateProductRequestValidator).Assembly);
 
-            // Application Services
+            // Application Services - USAR LAS INTERFACES CORRECTAS
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IProductRequestService, ProductRequestService>();
             services.AddScoped<IOfferService, OfferService>();

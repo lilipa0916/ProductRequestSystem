@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProductRequestSystem.Application.DTOs;
+using ProductRequestSystem.Application.Interfaces;
 
 namespace ProductRequestSystem.WebApi.Controllers
 {
